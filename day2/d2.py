@@ -2,7 +2,7 @@ def isValidGame(rounds, i):
     for r in rounds: 
         rolls = r.strip().split(", ")
         for roll in rolls:
-            reds = 0
+            reds = -1 
             greens = 0
             blues = 0
             if(reds != 0 or greens != 0 or blues != 0):
@@ -21,8 +21,6 @@ def isValidGame(rounds, i):
 
 with open('input', 'r') as file1:
     lines = file1.readlines()
-
-games = {}
 
 sum = 0
 for line in lines:
