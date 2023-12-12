@@ -1,5 +1,6 @@
 file1 = open('input', 'r')
 lines = file1.readlines()
+file1.close()
 
 def fun(line):
     digits = []
