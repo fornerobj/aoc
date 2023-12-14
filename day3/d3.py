@@ -7,35 +7,16 @@ def isSymbol(c):
 
 #check upperleft, up, upright, left, right, lowerleft, down, lowerright and return true if any of them is a symbol
 def isPart(lines, x, y, xmax, ymax):
-    check = False
-    if(y != 0):
-        if(x !=0):
-            if isSymbol(lines[y-1][x-1]):
-                check = True
-        if isSymbol(lines[y-1][x]):
-            check = True
-        if(x != xmax):
-            if isSymbol(lines[y-1][x+1]):
-                check = True
-
-    if(x !=0):
-        if isSymbol(lines[y][x-1]):
-            check = True
-    if(x != xmax):
-        if isSymbol(lines[y][x+1]):
-            check = True
-
-    if(y != ymax):
-        if(x !=0):
-            if isSymbol(lines[y+1][x-1]):
-                check = True
-        if isSymbol(lines[y+1][x]):
-            check = True
-        if(x != xmax):
-            if isSymbol(lines[y+1][x+1]):
-                check = True
+    # Define the offsets for the neighboring cells
+    offsets = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
     
-    return check
+    # Check each neighboring cell
+    for dx, dy in offsets:
+        nx, ny = x + dx, y + dy
+        if 0 <= nx <= xmax and 0 <= ny <= ymax and isSymbol(lines[ny][nx]):
+            return True
+    
+    return False
 
 #get length of the lines and the number of lines
 xmax = len(lines[0])-1
@@ -60,5 +41,5 @@ for i, line in enumerate(lines):
     if curnum != "":
         if(check):
             total += int(curnum)
-            
+
 print(total)
