@@ -4,17 +4,28 @@ with open('input', 'r') as file1:
 def noEmpty(s):
     return s != ''
 
-total = 0
+#keep dictionary of cards and how many copies + original there are
+games = {}
+numGames = len(lines)
+for i in range(numGames):
+    games[i] = 1
+
 for i, line in enumerate(lines):
-    points = 0
+    numMatching = 0
     line = line.split(':')[1].strip()
     winners = list(filter(noEmpty, line.split('|')[0].strip().split(' ')))
     scratches = list(filter(noEmpty, line.split('|')[1].strip().split(' ')))
+    nums = []
+
     for s in scratches: 
         if s in winners:
-            if points == 0:
-                points += 1
-            else:
-                points *= 2
-    total += points
+            numMatching += 1
+    
+    for j in range(numMatching):
+        games[i+j+1] += games[i]
+        
+total = 0
+for game in games:
+    total += games[game]
 print(total)
+
