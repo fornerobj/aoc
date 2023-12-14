@@ -15,7 +15,7 @@ for i, line in enumerate(lines):
     line = line.split(':')[1]
     winners = list(filter(noEmpty, line.split('|')[0].split(' ')))
     scratches = list(filter(noEmpty, line.split('|')[1].split(' ')))
-
+    
     for s in scratches: 
         if s in winners:
             numMatching += 1
