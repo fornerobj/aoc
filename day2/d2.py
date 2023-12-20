@@ -2,7 +2,7 @@ def isValidGame(rounds, i):
     for r in rounds: 
         rolls = r.strip().split(", ")
         for roll in rolls:
-            reds = -1 
+            reds = 0 
             greens = 0
             blues = 0
             if(reds != 0 or greens != 0 or blues != 0):

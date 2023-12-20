@@ -14,7 +14,6 @@ with open('input', 'r') as file1:
 
 sum = 0
 for line in lines:
-    gamenumber = line.split(":")[0].split(" ")[1]
     game = line.split(":")[1].strip()
     sum += (findmaxofcolor(game, "red") * findmaxofcolor(game, "green") * findmaxofcolor(game, "blue"))
 
