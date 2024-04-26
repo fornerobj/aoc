@@ -1,5 +1,3 @@
-from functools import cmp_to_key
-
 with open('input') as f:
     lines = f.read().strip().splitlines()
 

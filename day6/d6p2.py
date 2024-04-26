@@ -48,4 +48,5 @@ while(dis1 < distance or dis2 >= distance):
         end = m
         break
 
+print(start, end)
 print(end-start+1)
