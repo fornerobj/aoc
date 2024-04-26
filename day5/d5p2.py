@@ -39,7 +39,6 @@ def mapFromKeys(map, input):
             arr.append((r[0], r[1]))
     return arr
 
-
 def noEmpty(s):
     return s != ''
 
