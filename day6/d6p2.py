@@ -13,14 +13,39 @@ distance = int("".join(distances))
 
 start, end = 0, 0
 
-for j in range(time):
-    dis = j * (time-j)
-    if dis > distance:
-        start = j
+dis1 = float('-inf')
+dis2 = float('inf')
+l, r = 0, time//2
 
-for j in range (time, 0, -1):
-    dis = j * (time-j)
-    if dis > distance:
-        end = j
+while(dis1 < distance or dis2 >= distance):
+    m = (l+r)//2
+    dis1 = m * (time-m)
+    dis2 = (m-1) * (time-m-1)
+    if(dis1 < distance):
+        l = m
+        continue
+    elif (dis1 >= distance and dis2 >= distance):
+        r = m
+        continue
+    else:
+        start = m
+        break
 
-print(start-end+1)
+dis1 = float('-inf')
+dis2 = float('inf')
+l, r = (time//2)+1, time
+while(dis1 < distance or dis2 >= distance):
+    m = (l+r)//2
+    dis1 = m * (time-m)
+    dis2 = (m+1) * (time-(m+1))
+    if(dis1 < distance):
+        r = m
+        continue
+    elif (dis1 >= distance and dis2 >= distance):
+        l = m
+        continue
+    else:
+        end = m
+        break
+
+print(end-start+1)
